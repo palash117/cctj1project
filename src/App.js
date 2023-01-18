@@ -6,7 +6,7 @@ import React, {useState} from 'react'
 
 function App() {
  //let [mode, setMode]=useState('home')
- let [mode, setMode]=useState('categories')
+ let [mode, setMode]=useState('wordlist')
  let [selectedCategories, setCategories] = useState([])
  let setHomeMode =()=> { 
      setMode('home')
