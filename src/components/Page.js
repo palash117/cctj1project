@@ -20,11 +20,12 @@ function Page({mode, selectedCategories, setCategories, setCategoriesMode, setWo
 }
 
 
-function Word({jstring, estring, contributer, nextHandler, prevHandler, showEnglishfirst}){
+function Word({jstring, estring, contributer, nextHandler, prevHandler, showEnglishfirst, imglink}){
     let [flashModeOn , setFlashMode] = useState(true)
     let [cardFlipped , flipCard] = useState(!showEnglishfirst)
 
     let toggleFlashMode = ()=>{setFlashMode(v=>{return !v})}
+    console.log("imglink is ", imglink)
 
     return (
         <div className="Word">
@@ -58,6 +59,10 @@ function Word({jstring, estring, contributer, nextHandler, prevHandler, showEngl
     
             </div>
             }
+            
+            { imglink && 
+                    <img max-width="80%" max-height="70%" className="Word-image" src={imglink} />
+            }
             {!flashModeOn &&
             <div className="Word-message">
                 
@@ -87,6 +92,8 @@ function WordList({selectedCategories, setCategoriesMode}){
         return selectedCategories.map(c=>v.categories.includes(c)).reduce((a,b)=>a&&b,true)
 
     })
+    //words =words.filter(w=>w.imglink!="");
+    console.table(words)
     debugger
     const [index, setIndex] = useState(0)
 
@@ -126,7 +133,7 @@ function WordList({selectedCategories, setCategoriesMode}){
         </div>
         { 
             words && words.length>0?
-        <Word showEnglishfirst={showEnglishfirst} jstring={w.jstring} estring={w.estring} contributer={w.contributer} nextHandler={incrIndex} key={w.jstring} prevHandler={decrIndex}/>
+        <Word showEnglishfirst={showEnglishfirst} imglink={w.imglink} jstring={w.jstring} estring={w.estring} contributer={w.contributer} nextHandler={incrIndex} key={w.jstring} prevHandler={decrIndex}/>
         :
         <span>No words found for selected categories</span>
         }
