@@ -54,11 +54,18 @@
   border: 2px solid var(--t-color);
   border-radius:10px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center; 
   position:relative;
 
+}
+
+.Word-image{
+    max-width:80%;
+    height:auto;
+    border-radius:5%;
+    border: var(--s-color) 2px solid;
 }
 .Word-left{
 
